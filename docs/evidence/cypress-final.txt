@@ -1,0 +1,262 @@
+
+
+DevTools listening on ws://127.0.0.1:51329/devtools/browser/87878907-84b9-4f4c-91c8-52e83ed9013d
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        15.5.0                                                                         │
+  │ Browser:        Electron 138 (headless)                                                        │
+  │ Node Version:   v20.17.0 (C:\Program Files\nodejs\node.exe)                                    │
+  │ Specs:          3 found (api.cy.js, business.cy.js, ui.cy.js)                                  │
+  │ Searched:       cypress/e2e/**/*.cy.{js,jsx,ts,tsx}                                            │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  api.cy.js                                                                       (1 of 3)
+
+
+  API: catalogue business rules
+    √ API-001: six products on the default page (610ms)
+    1) API-002: search ignores case and surrounding spaces
+    √ API-003-Audio: category filter (163ms)
+    √ API-003-Workspace: category filter (163ms)
+    √ API-003-Lifestyle: category filter (155ms)
+    √ API-004-price_asc: numeric price ordering (180ms)
+    √ API-004-price_desc: numeric price ordering (180ms)
+    √ API-005: inclusive minimum and maximum price (158ms)
+    √ API-006: stock, category, search, price and sort combine (165ms)
+    √ API-007: in-stock excludes zero stock (195ms)
+    √ API-008: invalid query {"page":0} returns 422 (164ms)
+    √ API-008: invalid query {"limit":0} returns 422 (170ms)
+    √ API-008: invalid query {"limit":21} returns 422 (164ms)
+    √ API-008: invalid query {"min_price":200,"max_price":100} returns 422 (190ms)
+    √ API-009: product details match list price and stock (201ms)
+
+  API: workspace security
+    √ API-010 /api/favorites, missing token → 401 (172ms)
+    √ API-010 /api/favorites, unknown token → 401 (188ms)
+    √ API-010 /api/products/p01/review, missing token → 401 (413ms)
+    √ API-010 /api/products/p01/review, unknown token → 401 (190ms)
+    √ API-010 /api/orders, missing token → 401 (191ms)
+    √ API-010 /api/orders, unknown token → 401 (253ms)
+    √ API-011: independent workspaces start with empty favorites and orders (909ms)
+
+
+  21 passing (7s)
+  1 failing
+
+  1) API: catalogue business rules
+       API-002: search ignores case and surrounding spaces:
+
+      AssertionError: expected [] to deeply equal [ 'p01', 'p09' ]
+      + expected - actual
+
+      -[]
+      +[ 'p01', 'p09' ]
+      
+      at Context.eval (webpack://test-me-qa/./cypress/e2e/api.cy.js:16:64)
+      at getRet (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122243:20)
+      at tryCatcher (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:1777:23)
+      at Promise.attempt.Promise.try (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:4285:29)
+
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        22                                                                               │
+  │ Passing:      21                                                                               │
+  │ Failing:      1                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     6 seconds                                                                        │
+  │ Spec Ran:     api.cy.js                                                                        │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  business.cy.js                                                                  (2 of 3)
+
+
+  API: financial rules and workspace isolation
+    1) M-002-standard: normalized coupon and independent totals
+    2) M-002-express: normalized coupon and independent totals
+    3) M-003: standard shipping threshold before discount
+    √ M-002-invalid: unknown coupon returns 422 (365ms)
+    √ M-004-invalid-0: quantity validation (343ms)
+    √ M-004-invalid-11: quantity validation (322ms)
+    √ M-004-invalid-1.5: quantity validation (327ms)
+    √ M-004-stock: exceeding stock returns 409 (432ms)
+    √ M-005: declined payment creates no order (584ms)
+    4) M-008: confirmed order, foreign access, cancel and repeated cancel
+    √ M-009: favorites deduplicate, persist and isolate (854ms)
+    √ M-010: review persists, duplicate conflicts and foreign workspace cannot see it (826ms)
+
+
+  8 passing (11s)
+  4 failing
+
+  1) API: financial rules and workspace isolation
+       M-002-standard: normalized coupon and independent totals:
+
+      AssertionError: expected 422 to equal 200
+      + expected - actual
+
+      -422
+      +200
+      
+      at Context.eval (webpack://test-me-qa/./cypress/e2e/business.cy.js:13:28)
+      at getRet (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122243:20)
+      at tryCatcher (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:1777:23)
+      at Promise.attempt.Promise.try (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:4285:29)
+      at Context.thenFn (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122254:66)
+      at Context.then (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122505:21)
+
+  2) API: financial rules and workspace isolation
+       M-002-express: normalized coupon and independent totals:
+
+      AssertionError: expected 422 to equal 200
+      + expected - actual
+
+      -422
+      +200
+      
+      at Context.eval (webpack://test-me-qa/./cypress/e2e/business.cy.js:13:28)
+      at getRet (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122243:20)
+      at tryCatcher (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:1777:23)
+      at Promise.attempt.Promise.try (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:4285:29)
+      at Context.thenFn (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122254:66)
+      at Context.then (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122505:21)
+
+  3) API: financial rules and workspace isolation
+       M-003: standard shipping threshold before discount:
+     AssertionError: expected { Object (subtotal, discount, ...) } to have property 'shipping' of 0, but got 8000
+      at Proxy.include (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:82205:15)
+      at Proxy.chainableMethodWrapper (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:81075:49)
+      at Context.eval (webpack://test-me-qa/./cypress/e2e/business.cy.js:22:26)
+      at getRet (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122243:20)
+
+  4) API: financial rules and workspace isolation
+       M-008: confirmed order, foreign access, cancel and repeated cancel:
+
+      Timed out retrying after 4000ms
+      + expected - actual
+
+      -200
+      +409
+      
+      at Context.eval (webpack://test-me-qa/./cypress/e2e/business.cy.js:52:69)
+      at getRet (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122243:20)
+      at tryCatcher (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:1777:23)
+      at Promise.attempt.Promise.try (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:4285:29)
+      at Context.thenFn (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122254:66)
+      at Context.then (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122505:21)
+      at wrapped (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:145577:19)
+
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        12                                                                               │
+  │ Passing:      8                                                                                │
+  │ Failing:      4                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     11 seconds                                                                       │
+  │ Spec Ran:     business.cy.js                                                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  ui.cy.js                                                                        (3 of 3)
+
+
+  UI: critical public entry points
+    √ UI-001: catalogue offers an enabled add-to-cart control (1353ms)
+    √ UI-002: adding an item updates browser cart state and survives reload (2702ms)
+    √ UI-003: 360px layout has no horizontal document overflow (3324ms)
+    √ M-001: checkout with WELCOME10 persists one order and clears cart (9871ms)
+    1) UI-004: p07 repeated add creates one cart line
+    2) UI-005: applied coupon survives reload
+    √ UI-006: compare selection persists and clears (2469ms)
+
+
+  5 passing (32s)
+  2 failing
+
+  1) UI: critical public entry points
+       UI-004: p07 repeated add creates one cart line:
+
+      AssertionError: Timed out retrying after 4000ms: Too many elements found. Found '2', expected '1'.
+      + expected - actual
+
+      -2
+      +1
+      
+      at Context.eval (webpack://test-me-qa/./cypress/e2e/ui.cy.js:68:31)
+
+  2) UI: critical public entry points
+       UI-005: applied coupon survives reload:
+     AssertionError: expected 0 to equal 24000
+      at Context.eval (webpack://test-me-qa/./cypress/e2e/ui.cy.js:78:54)
+      at getRet (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122243:20)
+      at tryCatcher (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:1777:23)
+      at Promise.attempt.Promise.try (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:4285:29)
+      at Context.thenFn (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122254:66)
+      at Context.then (https://test-me.vzl.one/__cypress/runner/cypress_runner.js:122505:21)
+
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        7                                                                                │
+  │ Passing:      5                                                                                │
+  │ Failing:      2                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  2                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     31 seconds                                                                       │
+  │ Spec Ran:     ui.cy.js                                                                         │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\Users\User\Documents\Codex\2026-10-21\files-mentioned-by-the-user-pdf\outputs      (540x648)
+     \test-me-qa\cypress\screenshots\ui.cy.js\p07-duplicate-cart.png                                
+  -  C:\Users\User\Documents\Codex\2026-10-21\files-mentioned-by-the-user-pdf\outputs      (540x648)
+     \test-me-qa\cypress\screenshots\ui.cy.js\coupon-after-reload.png                               
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ×  api.cy.js                                00:06       22       21        1        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ×  business.cy.js                           00:11       12        8        4        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ×  ui.cy.js                                 00:31        7        5        2        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ×  3 of 3 failed (100%)                     00:49       41       34        7        -        -  
+

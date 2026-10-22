@@ -1,0 +1,15 @@
+{
+  "categories": ["Audio", "Workspace", "Lifestyle"],
+  "sortCases": [
+    {"sort": "price_asc", "direction": 1},
+    {"sort": "price_desc", "direction": -1}
+  ],
+  "invalidQueries": [
+    {"page": 0},
+    {"limit": 0},
+    {"limit": 21},
+    {"min_price": 200, "max_price": 100}
+  ],
+  "protectedEndpoints": ["/api/favorites", "/api/products/p01/review", "/api/orders"],
+  "emptyCollectionEndpoints": ["/api/favorites", "/api/orders"]
+}

@@ -1,0 +1,19 @@
+{
+  "coupon": "WELCOME10",
+  "defaultItems": [{"product_id": "p01", "quantity": 1}],
+  "welcome10": {"subtotal": 240000, "discount": 24000, "shipping": 0, "total": 216000},
+  "deliveryCases": [
+    {"delivery": "standard", "shipping": 0, "total": 216000},
+    {"delivery": "express", "shipping": 15000, "total": 231000}
+  ],
+  "shippingThresholdCases": [
+    {"product_id": "p08", "quantity": 5, "subtotal": 125000, "shipping": 8000},
+    {"product_id": "p02", "quantity": 1, "subtotal": 150000, "shipping": 0},
+    {"product_id": "p01", "quantity": 1, "subtotal": 240000, "shipping": 0}
+  ],
+  "invalidQuantities": [0, 11, 1.5],
+  "stockConflicts": [
+    {"product_id": "p07", "quantity": 4},
+    {"product_id": "p06", "quantity": 1}
+  ]
+}
